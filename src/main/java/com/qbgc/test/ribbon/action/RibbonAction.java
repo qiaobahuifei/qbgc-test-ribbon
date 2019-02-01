@@ -2,7 +2,7 @@ package com.qbgc.test.ribbon.action;
 
 import com.qbgc.test.ribbon.service.RibbonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +15,7 @@ public class RibbonAction {
 	private
 	RibbonService service;
 
-	@RequestMapping("/ribbon")
+	@GetMapping("/ribbon")
 	public String getRibbonInfo() {
 		return service.index();
 	}

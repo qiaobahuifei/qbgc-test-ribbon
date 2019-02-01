@@ -1,5 +1,6 @@
 package com.qbgc.test.ribbon.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +16,11 @@ public class RibbonService {
 	private
 	RestTemplate restTemplate;
 
+	public String error(){
+        return "ribbon断路器告诉你出错了！";
+    }
+
+    @HystrixCommand(fallbackMethod = "error")
 	public String index(){
 		// 本测试重点
 		return restTemplate.getForObject("http://QBGC-ADMIN-SERVICE/hi?name=gaochao", String.class);
